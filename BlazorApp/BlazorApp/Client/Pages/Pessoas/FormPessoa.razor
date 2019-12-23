@@ -1,0 +1,29 @@
+﻿<EditForm Model="@Pessoa" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label>Nome</label>
+        <InputText @bind-Value="Pessoa.Nome" />
+        <ValidationMessage For="@(() => Pessoa.Nome)" />
+    </div>
+
+    <div class="form-group">
+        <label>Data de Nascimento</label>
+        <InputDate @bind-Value="Pessoa.DataDeNascimento" />
+        <ValidationMessage For="@(() => Pessoa.DataDeNascimento)" />
+    </div>
+
+    <button class="btn btn-success"><em class="oi oi-check"></em> @TextoSubmit</button>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public Pessoa Pessoa { get; set; }
+
+    [Parameter]
+    public string TextoSubmit { get; set; }
+
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+}
